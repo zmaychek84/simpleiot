@@ -1,0 +1,19 @@
+name: First Workflow
+on: [workflow_dispatch] # manualy trigger the workflow
+jobs:
+  first-job:
+    runs-on: self-hosted
+    permissions:
+      security-events: write
+    steps:
+      - name: repo checkout
+        uses: actions/checkout@v3
+      - name: SimpleIOT test
+        run: docker run -i --rm --env-file /usr/testing/env.list --add-host usriappscansv:10.253.160.244 --volume ./simpleiot:/simpleiot appscan/appscan-src-cli:10.4.0 script /simpleiot/SimpleIOT.scan
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: simpleIOT.sarif
+          category: testing
+      - name: Print goodbye
+        run: echo "Done - bye!"

@@ -1,0 +1,6 @@
+login https://usriappscansv:9443/ase -acceptssl
+log on "/simpleiot/SimpleIOT.log"
+oa "/simpleiot/SimpleIOT.paf"
+scan "/simpleiot/simpleIOT.ozasmt" -scanconfig "Normal scan"
+export sarif /simpleiot/simpleIOT.sarif /simpleiot/simpleIOT.ozasmt
+quit
