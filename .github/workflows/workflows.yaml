@@ -11,7 +11,7 @@ jobs:
       - name: repo checkout
         uses: actions/checkout@v3
       - name: SimpleIOT test
-        run: docker run -i --rm --env-file /home/roman/env.list --add-host usriappscansv:10.253.160.244 --volume ./simpleiot:/simpleiot appscan/appscan-src-cli:10.5.0 script /simpleiot/SimpleIOT.scan
+        run: docker run -i --rm --env-file /home/roman/env.list --add-host usriappscansv:10.253.160.244 --volume ./simpleiot:/simpleiot 10.253.160.58:5002/appscan/appscan-src-cli:latest script /simpleiot/SimpleIOT.scan
       - name: Sleep now
         run: sleep 60
       - name: Upload SARIF file
